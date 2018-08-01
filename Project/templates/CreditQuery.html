@@ -1,0 +1,225 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans '上市公司信用评级' %}</h1>
+{% endblock %}
+{% block nav-global %}{% endblock %}
+{% load static %}
+{% block content %}
+    <div>
+        <label><h1>企业信用级别评分</h1> </label>
+        </br>
+        <form action="/CreditQuery/" method="get">
+            {% csrf_token %}
+        <table class="table" table-layout="fixed" width="900px">
+                <tr>
+                    <th>所得税:</th>
+                    <td><input type="text" name="p20" value=""></td>
+                    <th>净利润:</th>
+                    <td><input type="text" name="p22" value=""></td>
+                    <th>应收账款:</th>
+                    <td><input type="text" name="b4" value=""></td>
+                </tr>
+                <tr>
+                    <th>预付款项:</th>
+                    <td><input type="text" name="b5" value=""></td>
+                    <th>存货:</th>
+                    <td><input type="text" name="b10" value=""></td>
+                    <th>流动资产合计:</th>
+                    <td><input type="text" name="b14" value=""></td>
+                </tr>
+                <tr>
+                    <th>固定资产:</th>
+                    <td><input type="text" name="b20" value=""></td>
+                    <th>无形资产:</th>
+                    <td><input type="text" name="b26" value=""></td>
+                    <th>商誉:</th>
+                    <td><input type="text" name="b28" value=""></td>
+                </tr>
+                <tr>
+                    <th>资产合计:</th>
+                    <td><input type="text" name="b33" value=""></td>
+                    <th>应付账款:</th>
+                    <td><input type="text" name="b37" value=""></td>
+                    <th>应付利息:</th>
+                    <td><input type="text" name="b41" value=""></td>
+                </tr>
+                <tr>
+                    <th>其他流动负债:</th>
+                    <td><input type="text" name="b46" value=""></td>
+                    <th>流动负债合计:</th>
+                    <td><input type="text" name="b47" value=""></td>
+                    <th>长期借款:</th>
+                    <td><input type="text" name="b48" value=""></td>
+                </tr>
+                <tr>
+                    <th>长期应付款:</th>
+                    <td><input type="text" name="b50" value=""></td>
+                    <th>非流动负债合计:</th>
+                    <td><input type="text" name="b55" value=""></td>
+                    <th>负债合计:</th>
+                    <td><input type="text" name="b56" value=""></td>
+                </tr>
+                <tr>
+                    <th>公司资产价值:</th>
+                    <td><input type="text" name="b67" value=""></td>
+                    <th>支付现金:</th>
+                    <td><input type="text" name="c17" value=""></td>
+                    <th>支付利息现金:</th>
+                    <td><input type="text" name="c28" value=""></td>
+                </tr>
+                <tr>
+                    <th>折旧:</th>
+                    <td><input type="text" name="c36" value=""></td>
+                    <th>摊销:</th>
+                    <td><input type="text" name="c37" value=""></td>
+                    <th>长期摊销:</th>
+                    <td><input type="text" name="c38" value=""></td>
+                </tr>
+                <tr>
+                    <th>速动比率:</th>
+                    <td><input type="text" name="f2" value=""></td>
+                    <th>总资产收益率:</th>
+                    <td><input type="text" name="f20" value=""></td>
+                    <th>资本金收益率:</th>
+                    <td><input type="text" name="f21" value=""></td>
+                </tr>
+                <tr>
+                    <th>波动率:</th>
+                    <td><input type="text" name="f33" value=""></td>
+                    <th>固定资产净值率:</th>
+                    <td><input type="text" name="f52" value=""></td>
+                    <th></th>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="评分" >
+                    </td>
+                </tr>
+        </table>
+
+        </br>
+            </br>
+
+            <label><h3>相关数据:</h3> </label>
+        </br>
+        <table class="table" table-layout="fixed" width="900px">
+
+            <thead>
+                <tr>
+                    <th>所得税</th>
+                    <th>净利润</th>
+                    <th>应收账款</th>
+                    <th>预付款项</th>
+                    <th>存货</th>
+                    <th>流动资产合计</th>
+                    <th>固定资产</th>
+                    <th>无形资产</th>
+                    <th>商誉</th>
+                    <th>资产合计</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p>{{ ansb28 }}</p></td>
+                    <td><p>{{ ansb33 }}</p></td>
+                    <td><p>{{ ansp20 }}</p></td>
+                    <td><p>{{ ansp22 }}</p></td>
+                    <td><p>{{ ansb4 }}</p></td>
+                    <td><p>{{ ansb5 }}</p></td>
+                    <td><p>{{ ansb10 }}</p></td>
+                    <td><p>{{ ansb14 }}</p></td>
+                    <td><p>{{ ansb20}}</p></td>
+                    <td><p>{{ ansb26 }}</p></td>
+                </tr>
+            </tbody>
+             <thead>
+                <tr>
+                    <th>应付账款</th>
+                    <th>应付利息</th>
+                    <th>其他流动负债</th>
+                    <th>流动负债合计</th>
+                    <th>长期借款</th>
+                    <th>长期应付款</th>
+                    <th>非流动负债合计</th>
+                    <th>负债合计</th>
+                    <th>公司资产价值</th>
+                    <th>支付现金</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p>{{ ansb37 }}</p></td>
+                    <td><p>{{ ansb41 }}</p></td>
+                    <td><p>{{ ansb46}}</p></td>
+                    <td><p>{{ ansb47 }}</p></td>
+                    <td><p>{{ ansb48 }}</p></td>
+                    <td><p>{{ ansb50 }}</p></td>
+                     <td><p>{{ ansb55 }}</p></td>
+                    <td><p>{{ ansb56 }}</p></td>
+                    <td><p>{{ ansb67 }}</p></td>
+                    <td><p>{{ ansc17 }}</p></td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>支付利息现金</th>
+                    <th>折旧</th>
+                    <th>摊销</th>
+                    <th>长期摊销</th>
+                    <th>速动比率</th>
+                    <th>总资产收益率</th>
+                    <th>资本金收益率</th>
+                    <th>波动率</th>
+                    <th>固定资产净值率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p>{{ ansc28 }}</p></td>
+                    <td><p>{{ ansc36 }}</p></td>
+                    <td><p>{{ ansc37 }}</p></td>
+                    <td><p>{{ ansc38 }}</p></td>
+                    <td><p>{{ ansf2 }}</p></td>
+                    <td><p>{{ ansf20 }}</p></td>
+                    <td><p>{{ ansf21 }}</p></td>
+                    <td><p>{{ ansf33 }}</p></td>
+                    <td><p>{{ ansf52 }}</p></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        </br>
+            </br>
+
+            <label><h3>信用评级结果:</h3> </label>
+        </br>
+        <table class="table" table-layout="fixed" width="1000px">
+
+                <tr>
+                    <th>偿付能力得分(SolvencyScore):</th>
+                    <td><p>{{ ansSS }}</p></td>
+                </tr>
+                <tr>
+                    <th>违约距离(DistancetoDefault):</th>
+                    <td><p>{{ ansDD }}</p></td>
+                </tr>
+                <tr>
+                    <th>信用得分:</th>
+                    <td><p>{{ ansCR }}</p></td>
+                </tr>
+                <tr>
+                    <th>信用评级:</th>
+                    <td><p>{{ ansR }}</p></td>
+                </tr>
+                <tr>
+                    <th>级别详情:</th>
+                    <td><p>{{ ansRR }}</p></td>
+                </tr>
+        </table>
+        </form>
+    </div>
+{% endblock %}

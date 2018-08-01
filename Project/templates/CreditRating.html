@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+{% block branding %}
+<h1 id="site-name">{% trans '上市公司信用评级' %}</h1>
+{% endblock %}
+{% block nav-global %}{% endblock %}
+{% load static %}
+{% block content %}
+    <div>
+        <label><h1>评级说明</h1> </label>
+        </br>
+        <table class="table" table-layout="fixed" width="1000px" >
+            <thead >
+                <tr>
+                    <th width="30px">级别</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><h3>S</h3></td>
+                    <td><h4>极低的违约风险。被评为S级的企业通常运营范围广泛，业务不确定性低，并且可以轻松支付所有未结的到期日和目前现金以及一年的自由现金流量。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>A</h3></td>
+                    <td><h4>非常低的违约风险。被评为A的企业倾向于宽幅或窄幅的经济保护性，业务不确定性中低度，现金流比率具有较高的安全性，防止不利发展。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>B</h3></td>
+                    <td><h4>低违约风险。被评为B的企业包括宽幅或窄幅的经济保护性，业务不确定性中至高，现金流比率具有较高的安全性，可防止不利发展。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>C</h3></td>
+                    <td><h4>中等违约风险。发行人评为C的企业通常包括窄幅或无经济保护性，业务不确定性中至高，现金流比率提供适度的安全边际以防止恶化的商业环境。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>D</h3></td>
+                    <td><h4>高于平均违约风险。评级为D的企业通常不包括经济保护性，业务不确定性高至非常高，现金流比率提供较小安全边际以防止恶化的商业条件。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>E</h3></td>
+                    <td><h4>违约风险高。评级为E的企业通常不包括经济保护性，业务不确定性很高，现金流比率无法提供保护作用，说明企业对有利的商业条件有很大依赖性。</h4></td>
+                </tr>
+                <tr>
+                    <td><h3>F</h3></td>
+                    <td><h4>目前违约风险很高。评级为F的企业通常不包括经济保护性，业务不确定性极高，现金流比率无法提供保护作用，企业极度依赖有利的商业条件以避免违约或重大资本重组。</h4></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
